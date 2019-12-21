@@ -13,8 +13,9 @@ public class Xmastree {
 	public int rnd2 =(int)(Math.random()*((30-1)+1))+1;
 	public void drawTree()
 	{
+		Range intRange = new Range(Integer.class, new Integer(1), new Integer(5)); 
 		System.out.print("/033c");
-		for (int x : range (1,30,2))
+		for (int x : Range (1,30,2))
 		{
 			int rnd2 =(int)(Math.random()*((rnd2-1)+1))+1;
 			leaves();
