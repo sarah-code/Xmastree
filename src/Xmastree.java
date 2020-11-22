@@ -34,32 +34,52 @@
  */
 
 import java.util.*;
+
+import static java.lang.String.format;
+import static java.time.Year.of;
+
+import java.time.Year;
+
+
 import java.io.*;
 
 public class Xmastree {
-	public int treeLength = 15;
-	public int treeWidth = 15;
+	public static int treeLength = 15;
+	public static int treeWidth = 15;
 
 
-	public void drawTree()
+	public static void drawTree()
 	{
 		
 		for (int x = 0; x < treeLength; x++)
 		{
 			for (int y=0  ; y < treeWidth-x ; y++)
 			{
-				System.out.print(" ");
+				var i = (int) ((Math.random() * ((5 - 1) + 1)) + 1);
+				
+				starGeneration(i);
+				
 			}
-			for (int starz = 0; starz < (2 * x + 1); starz ++)
+			int limit = 2 * x + 1;
+			System.out.print(limit);
+			for (int leave = 0; leave < limit; leave ++)
 			{
 				leaves();
+				//starGeneration(limit);
 			}
+			
+			for (int i= treeWidth+1 ; i > 0; i++ )
+			{
+				starGeneration(i);
+			}
+			
+			
 			
 			System.out.println();
 		}
 		for (int x = 0; x < treeLength / 3; x++)
 		{
-			for (int y=0  ; y < treeWidth*85/100 ; y++)
+			for (int y=0  ; y < treeWidth*90/100 ; y++)
 			{
 				System.out.print(" ");
 			}
@@ -67,33 +87,46 @@ public class Xmastree {
 			{
 				trunk();
 			}
+		
 			System.out.println();
 		}
-		for (int g=0; g <= treeWidth*2; g++)
+		for (int g=0; g <= treeWidth*3; g++)
 		{
 			System.out.print("=");
 		}
 		System.out.println();
-		System.out.print("Merry Xmas and a happy new year 2020.");
+		System.out.print(format("'Tis the time of the year! \n Merry Xmas %s and a happy new year %s.", of(2020), Year.of(2021)));
 		System.out.println();
-		for (int g=0; g <= treeWidth*2; g++)
+		for (int g=0; g <= treeWidth*3; g++)
 		{
 			System.out.print("=");
 		}
 	}
-	public void leaves()
+	private static void starGeneration(int i) {
+		switch(i)
+		{
+		//case 3: System.out.print("*");break;
+		case 1: System.out.print(" ");break;
+		case 3: System.out.print(" ");break;
+		case 2: System.out.print("°");break;
+		case 4: System.out.print(" ");break;
+		case 5: System.out.print(" ");break;
+		}
+		
+	}
+	public static void leaves()
 	{
 		String typOfLeaves [] = {"x", "*"};
 		int ran = (int) ((Math.random() * ((1 - 0) + 1)) + 0);
 		System.out.print(typOfLeaves[ran]);
 	}
-	public void trunk()
+	public static void trunk()
 	{
 		System.out.print("|");
 	}
 	public static void main (String argv[])
 	{
-		Xmastree xt = new Xmastree();
-		xt.drawTree();
+	drawTree();
+		
 	}
 }
